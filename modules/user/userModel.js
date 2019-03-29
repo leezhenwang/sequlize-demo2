@@ -20,12 +20,12 @@ const UserField =
           primaryKey: true,
       },
       // 账号ID为一个整型，且不能为空
-      // userId: {
-      //     type: INTEGER.UNSIGNED,
-      //     allowNull: false,
-      //     // 账号id需要唯一性，这个是永远不能改变的值，特别是在分表的情况下，用自增ID不小心就会重复了
-      //     unique: true,
-      // },
+      userId: {
+          type: STRING(64),
+          allowNull: false,
+          // 账号id需要唯一性，这个是永远不能改变的值，特别是在分表的情况下，用自增ID不小心就会重复了
+          unique: true,
+      },
       // 账号名称，字符串，范围是 4~32
       userName: {
           // 如果不指定 STRING 长度，则默认是 255

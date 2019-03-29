@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const db = require('../../models').db;
@@ -10,16 +9,17 @@ var uuid = require('uuid');
 const operate = (req, res, next) => {
   // 获取接口参数
   const params = req.body;
-  const userId = uuid.v1();
+  const updateArr = ['userName','password','nickName','email'];
+  let updateObj = {};
+  updateArr.forEach(function(item){
+    let obj = {};
+    params[item] ? obj[item] = params[item] : {};
+    Object.assign(updateObj,obj)
+  })
+  console.log(updateObj)
   db.transaction(transaction => {
-    UserService.createUser({
-      userName: params.userName,
-      password: params.password,
-      nickName: params.nickName,
-      email: params.email,
-      userId: userId
-    }).then(data=>{
-      res.send('添加成功！');
+    UserService.updateUser(updateObj,params.userId).then(data=>{
+      res.send('更新成功！');
     }).catch(error =>{
       console.log(error)
       console.log(Common.handleError(error))

@@ -7,15 +7,15 @@ const UserModel = require('./user/userModel');
  * 打开重置数据库
  * 生产环境必须关闭
  */
-db
-  .sync({ force: true })
-  .then(() => {
-    console.log('数据库初始化成功');
-  })
-  .catch(err => {
-    console.log('数据库初始化失败');
-    console.log(err);
-  });
+// db
+//   .sync({ force: true })
+//   .then(() => {
+//     console.log('数据库初始化成功');
+//   })
+//   .catch(err => {
+//     console.log('数据库初始化失败');
+//     console.log(err);
+//   });
 
 //定义表之间的关系
 // UserModel.hasMany(ArticleModel, {
